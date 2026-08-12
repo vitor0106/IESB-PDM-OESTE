@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "pdm-pratica02",
-    "slug": "todo-basico",
+    "name": "minha-tarefas",
+    "slug": "minha-tarefas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
