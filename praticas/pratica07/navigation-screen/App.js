@@ -1,22 +1,44 @@
 import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import TodasDespesas from './screens/TodasDespesas';
-import DespesasRecentes from './screens/DespesasRecentes';
-import GerenciarDespesa from './screens/GerenciarDespesa';
+import TodasDespesas from './Screens/TodasDespesas';
+import DespesasRecentes from './Screens/DespesasRecentes';
+import GerenciarDespesa from './Screens/GerenciasDespesas';
 import { NavigationContainer } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
 
 export default function App() {
   const Tab = createBottomTabNavigator();
 
-  function BottonTabScreen() {
-    return (
-      <Tab.Navigator>
-        <Tab.Screen name='DespesasRecentes' component={DespesasRecentes} />
-        <Tab.Screen name='TodasDespesas' component={TodasDespesas} />
-      </Tab.Navigator>
-    )
-  }
+ function BottonTabScreen(){
+  const navigation = useNavigation();
+
+  return (
+    <Tab.Navigator
+    screenOptions={( {navigation } ) => ({ headerRight: () => <IconButton
+    icon="add" size={24} onPress={() => {
+      navigation.navigate('GerenciarDespesa')
+    }} /> }) }>
+
+      <Tab.Screen name="DespesasRecentes" component={DespesasRecentes}
+      options={{tabBarIcon: ({color, size}) => (<Ionicons name="hourglass"
+      size={size} color={color} />),
+      tabBarLabel: 'Recentes',
+      title: 'Despesas Recentes',
+      tabBarLabelStyle: { fontSize: 12 }}}
+      />
+      <Tab.Screen name="TodasDespesas" component={TodasDespesas}
+       options={{tabBarIcon: ({color, size}) => (<Ionicons name="wallet-outline"
+       size={size} color={color} />),
+       tabBarLabel: 'Todas',
+       title: 'Todas as Despesas',
+       tabBarLabelStyle: { fontSize: 12 }}}
+       />
+
+    </Tab.Navigator>
+  )
+}
   const Stack = createNativeStackNavigator();
 
   return (
