@@ -2,9 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { DespesasRecentes } from './Screens/DespesasRecentes'
-import { TodasDespesas } from './Screens/TodasDespesas'
-import { GerenciarDespesa } from './Screens/GerenciasDespesas'
+import DespesasRecentes from './screens/DespesasRecentes'
+import TodasDespesas from './screens/TodasDespesas'
+import GerenciarDespesa from './screens/GerenciarDespesa'
 import IconButton from './assets/componentes/IconButton';
 
 const Tab = createBottomTabNavigator();
